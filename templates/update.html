@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title">
+
+        <label for="description">Description</label>
+        <textarea name="description" id=""></textarea>
+
+        <label for="completed">Completed</label>
+        <input type="checkbox" name="completed" value="True">
+
+        <button type="submit"> Update </button>
+    </form>
+</body>
+</html>

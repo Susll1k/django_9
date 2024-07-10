@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: azure;
+        }
+        .cont{
+            background-color: rgb(189, 201, 210);
+            border-radius: 6px;
+            height: 230px;
+            width: 230px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title">
+        <button type="submit"> Search </button>
+    </form>
+    <h3><a href="{% url 'create' %}">Create new ToDo</a></h3>
+    <h1>ToDos</h1>
+    {% for task in tasks %}
+    <div class="cont">
+        <h1>{{task.title}}</h1>
+        <p>{{task.description}}</p>
+        <p>{{task.completed}}</p>
+        <a href="{% url 'delete' task_id=task.id %}">Delete</a>
+        <a href="{% url 'update' task_id=task.id %}">Update</a>
+
+    </div>
+    {% endfor %}
+</body>
+</html>
+
